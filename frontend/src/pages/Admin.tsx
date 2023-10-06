@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Admin = () => {
     return (
         <div>
-            <div className="fixed top-6 left-6 group mt-[120px] ">
+            <div className="fixed top-6 left-6 group mt-[120px]  ">
                 <Link to={"/"} className=" text-white bg-primarioUno hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 focus:outline-none">Volver</Link>
             </div>
             <div className=" flex items-center justify-center h-[86vh]  " >
