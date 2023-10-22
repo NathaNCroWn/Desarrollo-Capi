@@ -1,9 +1,10 @@
 from django.db import models
+from usuario.models import Usuario
 
 class Productos(models.Model):
-    UserProduct= models.IntegerField
+    UserProduct= models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True)
     productName= models.CharField(max_length=150)
-    productImg= models.ImageField
+    productImg= models.ImageField(null=True)
     productDescription= models.CharField(max_length=1500)
     productDescriptionSimple= models.CharField(max_length=1500)
-    price=models.DecimalField
+    price=models.FloatField(null=True)
