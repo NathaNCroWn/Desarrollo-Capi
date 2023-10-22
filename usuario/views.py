@@ -19,7 +19,27 @@ def register_Usuarios(request):
         )
     serializer= RegisterSerializer(usuario, many=False)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
-    
+
 class LoginView(TokenObtainPairView):
     serializer_class= MyTokenObtainPairSerializer
+
+@api_view(['GET'])
+def get_Usuario(request):
+    usuario = Usuario.objects.all()
+    serializer = UsuarioSerializer(usuario, many=True)
+    return Response (serializer.data)
+
+@api_view(['PUT'])
+def update_Usuario(request, id):
+    usuario = Usuario.objects.get(id=id)
+    serializer = UsuarioSerializer(usuario, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['DELETE'])
+def delete_Usuarios(request, id):
+    usuario= Usuario.objects.get(id=id)
+    usuario.delete()
+    return Response ({'detail':'el usuario se elimino correctamente'}, status=status.HTTP_204_NO_CONTENT)
