@@ -5,12 +5,12 @@ from .serializers import ContizacionSerializer
 from rest_framework import status
 
 @api_view(['POST'])
-def register_Cotizacion(request):
-    productos= ContizacionSerializer(data=request.data)
-    if productos.is_valid():
-        productos.save()
-        return Response(productos.data)
-    
+def create_Cotizacion(request):
+    cotizacion= ContizacionSerializer(data=request.data)
+    if cotizacion.is_valid():
+        cotizacion.save()
+        return Response(cotizacion.data)
+    return Response(cotizacion.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def get_Cotizacion(request):

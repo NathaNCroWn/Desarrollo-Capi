@@ -10,6 +10,7 @@ def register_Producto(request):
     if productos.is_valid():
         productos.save()
         return Response(productos.data)
+    return Response(productos.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
 @api_view(['GET'])
